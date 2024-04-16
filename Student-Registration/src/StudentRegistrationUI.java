@@ -16,7 +16,7 @@ public class StudentRegistrationUI extends JFrame {
     public StudentRegistrationUI(String string) {
         super();
 
-      // Create labels and text fields
+        // Create labels and text fields
         titleLabel = new JLabel("      Student Registration Form   " , JLabel.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 28));  // Title formatting
          
@@ -104,6 +104,24 @@ public class StudentRegistrationUI extends JFrame {
                 String stud_id = studIdField.getText();
                 String stud_dep = studDepField.getText();
                 String stud_contact = studContactField.getText();
+
+
+                boolean firstname = isVAlidName(firstName);
+                boolean middlename = isVAlidName(middleName);
+                boolean lastname = isVAlidName(lastName);
+                boolean Stud_id = isvalidateId(stud_id);
+                boolean Stud_contact = isvalidContactNumber(stud_contact);
+
+
+                if(firstname != true || middlename != true || lastname != true || Stud_id != true || Stud_contact != true ){
+                    firstNameField.setText("");
+                    middleNameField.setText("");
+                    lastNameField.setText("");
+                    studIdField.setText("");
+                    studDepField.setText("");
+                    studContactField.setText("");
+                    return;
+                }
 
                 if (firstName.isEmpty() || middleName.isEmpty() || lastName.isEmpty() || stud_dep.isEmpty() || stud_contact.isEmpty() || stud_id.isEmpty()) {
                 
@@ -198,6 +216,55 @@ public class StudentRegistrationUI extends JFrame {
           }
         }
       }
+
+        private static boolean isvalidateId(String stud_id){
+          boolean isValidId = true;
+          try {
+                  String id_matches = "[0-9/]{7}";
+
+                  if(!stud_id.matches(id_matches)){
+                      JOptionPane.showMessageDialog(null, "Please enter a idno (six digit and backslash only).", "Invalid id_No", JOptionPane.ERROR_MESSAGE);
+                      isValidId = false;
+                  }  
+          } catch (Exception e) {
+              e.getMessage();
+          }
+          return isValidId;
+      }
+  
+      private static boolean isVAlidName(String inputname){
+          boolean isValidName = true;
+          try {
+              
+              String name_matches = "[a-zA-Z]+([ -][a-zA-Z]+)*";
+
+              if (!inputname.matches(name_matches)) {
+                  JOptionPane.showMessageDialog(null, "Please enter a  correct name (letter s and spaces only).", "Invalid name", JOptionPane.ERROR_MESSAGE);  
+                  isValidName = false;
+              }
+          } catch (Exception e) {
+              e.getMessage();
+          }
+          return isValidName;
+      }
+
+      private static boolean  isvalidContactNumber(String contactNumber){
+        boolean isValidContact = true;
+
+        try {
+            String contact_matches = "^09[0-9]{8}";
+
+            if (!contactNumber.matches(contact_matches)) {
+                    JOptionPane.showMessageDialog(null, "Please enter a  correct your contact Number (start with 09 and can't exceed 10 digit).", "Invalid contact Number", JOptionPane.ERROR_MESSAGE);
+                    isValidContact = false;
+            }  
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return isValidContact;
+    }
+
+
       
     public static void main(String[] args) {
         new StudentRegistrationUI("Student Registration");
