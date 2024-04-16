@@ -26,11 +26,15 @@ public class LoginPage extends JFrame{
         // created components
         JLabel label = new JLabel("LOGIN PAGE ",JLabel.CENTER);
         label.setFont(label.getFont().deriveFont(Font.BOLD,30));
+        label.setForeground(Color.WHITE);
+        label.setFont(new Font("Arial", Font.PLAIN, 45));
+
 
         getContentPane().setBackground(Color.LIGHT_GRAY);
              
         JButton adminButton = new JButton("Admin");
-        adminButton.setPreferredSize(new Dimension(130, 50));
+        adminButton.setPreferredSize(new Dimension(150, 50));
+        adminButton.setFont(new Font("Arial", Font.PLAIN, 25));
 
         adminButton.addActionListener(new ActionListener() {
 
@@ -96,7 +100,8 @@ public class LoginPage extends JFrame{
         });
 
         JButton studButton = new JButton("Student");
-        studButton.setPreferredSize(new Dimension(130, 50));
+        studButton.setPreferredSize(new Dimension(150, 50));
+        studButton.setFont(new Font("Arial", Font.PLAIN, 25));
 
         // adding action listenner to the studButton 
         studButton.addActionListener(new ActionListener() {
