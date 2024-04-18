@@ -220,7 +220,7 @@ public class StudentRegistrationUI extends JFrame {
         private static boolean isvalidateId(String stud_id){
           boolean isValidId = true;
           try {
-                  String id_matches = "[0-9/]{7}";
+                  String id_matches = "[0-9]";
 
                   if(!stud_id.matches(id_matches)){
                       JOptionPane.showMessageDialog(null, "Please enter a idno (six digit and backslash only).", "Invalid id_No", JOptionPane.ERROR_MESSAGE);
