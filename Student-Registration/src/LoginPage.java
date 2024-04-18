@@ -107,12 +107,12 @@ public class LoginPage extends JFrame{
         studButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              //StudentInterface.createSearchInterface();
+            //StudentInterface.createSearchInterface();
                dispose();
             }
         });
 
-        // create panel for Buttons
+    // create panel for Buttons
         JPanel butJPanel = new JPanel();
         butJPanel.setLayout(new FlowLayout());
         butJPanel.add(adminButton);
