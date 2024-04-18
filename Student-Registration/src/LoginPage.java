@@ -59,7 +59,7 @@ public class LoginPage extends JFrame{
                   if (enteredpassword.equals("admin123")) {
                       // close prevoius admin-frame 
                       adminloginFrame.dispose();
-                      //new StudentRegistrationUI("admin123");
+                      new StudentRegistrationUI("admin123");
                   }else{
 
                     // Password is incorrect
