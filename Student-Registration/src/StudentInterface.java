@@ -24,12 +24,9 @@ public class StudentInterface {
     public static String searchStudentById(String studentId) {
 
         
-        String DB_URL = "jdbc:mysql://localhost:3306/course_db"; // Adjust URL for your XAMPP setup
-        String DB_USERNAME = "root"; // Replace with your XAMPP username
-        String DB_PASSWORD = ""; // Replace with your XAMPP password
-
-
-
+        String DB_URL = "jdbc:mysql://localhost:3306/course_db"; 
+        String DB_USERNAME = "root"; 
+        String DB_PASSWORD = ""; 
 
         Connection conn = null;
         Statement stmt = null;
@@ -44,7 +41,6 @@ public class StudentInterface {
             conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 
             // Execute a query to retrieve student data by ID
-
             stmt = conn.createStatement();
             String sql = "SELECT * FROM student_reg_table WHERE stud_id = " + studentId;
             rs = stmt.executeQuery(sql);
@@ -53,15 +49,6 @@ public class StudentInterface {
             
             if (rs.next()) {
                 results.append("Student ID: " + rs.getInt("stud_id") + "\n");
-
-                // Loop through all columns and add them to the results string
-               /*  for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-                    String columnName = rs.getMetaData().getColumnName(i);
-                    String columnValue = rs.getString(columnName);
-                    results.append(columnName + ": " + columnValue + "\n");
-
-                  
-                }*/
 
                 String first_column = rs.getMetaData().getColumnName(1);
                 String second_column = rs.getMetaData().getColumnName(2);
@@ -111,11 +98,9 @@ public class StudentInterface {
             } catch (SQLException se) {
                 se.printStackTrace();
             }
-
-            
+  
         }
 
-       
         return results.toString();
     }
 
@@ -154,8 +139,6 @@ public class StudentInterface {
                     JOptionPane.showMessageDialog(searchFrame, "Student with ID: " + studentID + " not found.");
                 } else {
 
-                
-               
                 try{
 
                     Connection conn;
@@ -189,8 +172,6 @@ public class StudentInterface {
 
     public static void createStudentInterface(String fn, String mn, String ln,String stud_dep,String contact,String stud_id) {
 
-       
-
         JFrame studentFrame = new JFrame("Student Information");
         studentFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         studentFrame.setSize(350, 400);
@@ -198,32 +179,31 @@ public class StudentInterface {
         studentFrame.setLayout(new GridLayout(7, 2));
         studentFrame.setLocationRelativeTo(null); // Center the frame on the screen
 
-        JLabel firstNameLabel = new JLabel("    First Name:");
+        JLabel firstNameLabel = new JLabel("     First Name:");
         JLabel firstNameField = new JLabel();
         firstNameField.setText(fn);
 
-        JLabel middleNameLabel = new JLabel("    Middle Name:");
+        JLabel middleNameLabel = new JLabel("     Middle Name:");
         JLabel middleNameField = new JLabel();
         middleNameField.setText(mn);
 
-        JLabel lastNameLabel = new JLabel("     Last Name:");
+        JLabel lastNameLabel = new JLabel("      Last Name:");
         JLabel lastNameField = new JLabel();
         lastNameField.setText(ln);
         
-        JLabel studentIDLabel = new JLabel("     Student ID:");
+        JLabel studentIDLabel = new JLabel("      Student ID:");
         JLabel studentIDField = new JLabel();
         studentIDField.setText(stud_id);
 
-        JLabel departmentLabel = new JLabel("    Department:");
+        JLabel departmentLabel = new JLabel("     Department:");
         JLabel departmentField = new JLabel();
         departmentField.setText(stud_dep);
 
-        JLabel contactLabel = new JLabel("    Contact:");
+        JLabel contactLabel = new JLabel("     Contact:");
         JLabel contactField = new JLabel();
         contactField.setText(contact);
 
        
-
         studentFrame.add(firstNameLabel);
         studentFrame.add(firstNameField);
         studentFrame.add(middleNameLabel);
